@@ -1,6 +1,6 @@
 # Jakyra's SQL Portfolio
 ## Welcome! ✨ 
 
-Here, I will be showcasing all of the projects that have helped me practice SQL and molded me in my jounery of becoming a data analyst. Feel free to take a took and reach out with any questions you may have.
-
+Here, you will find a collection of projects that have helped me strengthen my SQL skills and shaped my journey toward becoming a data analyst. Feel free to explore, and don't hesitate to reach out if you have any questions or feedback!
  
+📧 [jdmathis00@gmail.com](mailto:jdmathis00@gmail.com)
