@@ -39,7 +39,7 @@ ORDER BY price;
 SELECT AVG(price) AS Price_avg
 FROM superstore;
 
--- A SQL query that will show a statistic about the price for items in the catefory of "Kitchen Supplies"
+-- A SQL query that will show a statistic about the price for items in the category of "Kitchen Supplies"
 
 SELECT SUM(price) AS KitchenSupplies_sum
 FROM superstore
