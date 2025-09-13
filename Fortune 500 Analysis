@@ -80,7 +80,7 @@ SELECT company_name,revenue,
 FROM 
     fortune_companies;
     
--- Which industries total number of employees exceeds 100,000?
+-- Which industry's total number of employees exceed 100,000?
 
 SELECT industry, SUM(employees) AS total_employees
 FROM fortune_companies
