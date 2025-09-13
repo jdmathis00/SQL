@@ -57,19 +57,19 @@ VALUES
     ('Company JJ', 'Manufacturing', 370.0, 3100, 1, 20, 12, 7.6),
     ('Company KK', 'Healthcare', 150.2, 3400, 0, 16, 8, 5.3); 
 
-# Which companies have health care benifits and give at least 10 weeks of maternity leave?
+-- Which companies have health care benifits and give at least 10 weeks of maternity leave?
 
 SELECT company_name
 FROM fortune_companies
 WHERE healthcare_benefits = 1
 AND maternity_leave_weeks >= 10;
 
-# What is each companies average paid days off per week?
+-- What is each companies average paid days off per week?
 
 SELECT company_name, paid_time_off_days / 52.0 AS avg_pto_weekly
 FROM fortune_companies;
 
-# Rank the companies based on revenue 
+-- Rank the companies based on revenue 
 
 SELECT company_name,revenue,
     CASE
@@ -80,7 +80,7 @@ SELECT company_name,revenue,
 FROM 
     fortune_companies;
     
-# Which industries total number of employees exceeds 100,000?
+-- Which industries total number of employees exceeds 100,000?
 
 SELECT industry, SUM(employees) AS total_employees
 FROM fortune_companies
