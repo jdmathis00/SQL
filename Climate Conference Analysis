@@ -1,0 +1,64 @@
+#I will provide the database I used for this project.
+#Database: https://www.db-fiddle.com/f/pxMci1sLL945KHKYvpe9W6/1
+
+-- List all VIPs and the hotel they reserved (if any). Show VIPs even if they never made a reservation. (Left join)
+
+SELECT v.first_name, v.last_name, h.hotel_name
+FROM vips v
+LEFT JOIN reservations r
+ON v.member_id = r.member_id
+LEFT JOIN hotels h
+ON r.hotel = h.hotel_id;
+
+-- Show all VIPs who made a hotel reservation along with the hotel name. Only include VIPs who actually reserved a hotel. (Inner join)
+
+SELECT v.first_name, v.last_name, h.hotel_name
+FROM vips v
+INNER JOIN reservations r
+ON v.member_id = r.member_id
+INNER JOIN hotels h
+ON r.hotel = h.hotel_id;
+
+-- List all VIPs with their event name and the hotel they reserved. (Multiple joins)
+
+SELECT v.first_name, v.last_name, e.event_name, h.hotel_name 
+FROM vips v
+LEFT JOIN events e
+ON v.event = e.event_id
+LEFT JOIN reservations r
+ON v.member_id = r.member_id
+LEFT JOIN hotels h
+ON r.hotel = h.hotel_id;
+
+-- Find the VIPs who are in an association. Show the association along with the earlist year in which any VIP at that same association became a member. (Join + Subquery)
+
+SELECT v.first_name, v.last_name, v.association, v.member_since, a.earliest_year
+FROM vips v
+INNER JOIN (
+    SELECT association,
+           MIN(member_since) AS earliest_year
+    FROM vips
+    WHERE association IS NOT NULL
+    GROUP BY association
+) a
+ON v.association = a.association
+WHERE v.association IS NOT NULL;
+
+-- For each event, count how many VIPs are attending. (Aggregation)
+
+SELECT e.event_name, COUNT(v.member_id) AS num_attendees
+FROM events e
+LEFT JOIN vips v
+ON e.event_id = v.event
+GROUP BY e.event_name
+ORDER BY num_attendees DESC;
+
+-- List the VIPs who joined their association before 2010 and also have a hotel reservation. (Filtering)
+
+SELECT v.first_name, v.last_name, v.association, v.member_since, h.hotel_name 
+FROM vips v 
+JOIN reservations r
+ON v.member_id = r.member_id
+JOIN hotels h
+ON r.hotel = h.hotel_id
+WHERE v.member_since < 2010;
